@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Manual json should not be stored online
+src/data/manual_json_files/*
