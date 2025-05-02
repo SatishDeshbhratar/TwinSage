@@ -4,7 +4,7 @@ export const loadComparisonData = async (): Promise<ComparisonData[]> => {
   try {
     // Import the combined JSON file
     const module = await import(
-      '../data/manual_json_files/enriched_profile_data.json'
+      '../data/manual_json_files/error_cases_conservative.json'
     );
 
     if (
