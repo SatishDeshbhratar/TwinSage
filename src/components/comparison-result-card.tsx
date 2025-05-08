@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ProfileCard } from "./profile-card";
 import { ConfidenceBadge, DecisionBadge } from "./badge";
 import { FeatureDetailsTable } from "./feature-details-table";
+import { Info } from "lucide-react";
 
 const getProfileValueForFeature = (
   details: ProfileDetails,
@@ -39,6 +40,25 @@ const getProfileValueForFeature = (
       return 'N/A';
   }
 };
+
+// Add the SummaryBox component
+const SummaryBox = ({ summary }: { summary: string }) => { 
+  return ( 
+    <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4"> 
+      <div className="flex items-start"> 
+        <div className="flex-shrink-0 pt-0.5"> 
+          <Info className="h-5 w-5 text-blue-500" /> 
+        </div> 
+        <div className="ml-3"> 
+          <h3 className="text-sm font-medium text-blue-800">Analysis Summary</h3> 
+          <div className="mt-2 text-sm text-blue-700"> 
+            <p>{summary}</p>
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+  ); 
+}; 
 
 // Helper function to generate feature descriptions
 const getFeatureDescription = (
@@ -185,8 +205,11 @@ export const ComparisonResultCard = ({ comparison }: { comparison: ComparisonDat
           </button>
         </div>
       </div>
-      <h3>LLM Summary</h3>
-      <p className="text-gray-700 text-xs">{comparison.llm_analysis.summary}</p>
+
+      <div className="flex justify-between items-center mb-4">
+        <SummaryBox summary={llmAnalysis.summary} />
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <ProfileCard
           profile={

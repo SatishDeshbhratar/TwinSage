@@ -1,10 +1,9 @@
 import { cloneDeep } from 'lodash';
 import { Link } from 'react-router-dom';
-
-import { HOME_PATH } from './path';
+import { HOME_PATH, CLUSTERS_PATH } from './path';
 import { TypeNavs, TypeRoutes } from './type-navs';
-import { ModelResults } from '@/pages';
 import { capitalizeFirstLetter } from '@/utils';
+import { ModelResults, Clusters } from '@/pages';
 
 const navs: TypeNavs[] = [
   {
@@ -12,11 +11,11 @@ const navs: TypeNavs[] = [
     label: 'model results',
     element: <ModelResults />,
   },
-  // {
-  //   key: USER_PATH,
-  //   label: 'clusters',
-  //   element: <Clusters />,
-  // },
+  {
+    key: CLUSTERS_PATH,
+    label: 'clusters',
+    element: <Clusters />,
+  },
 ];
 
 const getRoutes = (arr: TypeRoutes[], nav: TypeNavs, basePath = '') => {
